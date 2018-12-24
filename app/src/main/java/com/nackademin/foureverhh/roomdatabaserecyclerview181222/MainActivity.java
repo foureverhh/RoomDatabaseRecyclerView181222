@@ -33,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         users = new ArrayList<>();
         for (int i = 0; i <10; i++) {
-            User user = new User("Daniel","Berg","daniel.berg@gmail.com");
+            User user = new User("Daniel #"+i,
+                    "Berg #"+i,
+                    "daniel.berg@gmail.com #"+i);
             users.add(user);
             //users.add("Famous people #"+ i);
         }

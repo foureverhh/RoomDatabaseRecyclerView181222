@@ -27,7 +27,9 @@ class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.firstName.setText(users.get(position).toString());
+        holder.firstName.setText(users.get(position).getFirstName());
+        holder.lastName.setText(users.get(position).getLastName());
+        holder.email.setText(users.get(position).getEmail());
     }
 
     @Override
@@ -38,10 +40,14 @@ class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView firstName;
+        TextView lastName;
+        TextView email;
 
         public ViewHolder(View itemView) {
             super(itemView);
             firstName = itemView.findViewById(R.id.first_name);
+            lastName = itemView.findViewById(R.id.last_name);
+            email = itemView.findViewById(R.id.email);
         }
     }
 }
