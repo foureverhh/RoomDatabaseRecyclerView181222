@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
-    ArrayList<String> users;
-    public UserAdapter(ArrayList<String> users){
+    ArrayList<User> users;
+    public UserAdapter(ArrayList<User> users){
         this.users = users;
     }
     @NonNull
@@ -27,7 +27,7 @@ class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.firstName.setText(users.get(position));
+        holder.firstName.setText(users.get(position).toString());
     }
 
     @Override

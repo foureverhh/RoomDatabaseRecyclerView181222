@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
-    ArrayList<String> users;
+    ArrayList<User> users;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         users = new ArrayList<>();
         for (int i = 0; i <10; i++) {
-            users.add("Famous people #"+ i);
+            User user = new User("Daniel","Berg","daniel.berg@gmail.com");
+            users.add(user);
+            //users.add("Famous people #"+ i);
         }
         adapter = new UserAdapter(users);
         recyclerView.setAdapter(adapter);
