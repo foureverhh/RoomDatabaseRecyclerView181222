@@ -13,12 +13,15 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     FloatingActionButton fab;
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
+    ArrayList<String> users;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +31,11 @@ public class MainActivity extends AppCompatActivity {
         fab = findViewById(R.id.fab);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new UserAdapter();
+        users = new ArrayList<>();
+        for (int i = 0; i <10; i++) {
+            users.add("Famous people #"+ i);
+        }
+        adapter = new UserAdapter(users);
         recyclerView.setAdapter(adapter);
 
         fab.setOnClickListener(new View.OnClickListener() {
