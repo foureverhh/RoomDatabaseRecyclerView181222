@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
 class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
-    ArrayList<User> users;
-    public UserAdapter(ArrayList<User> users){
+    List<User> users;
+    public UserAdapter(List<User> users){
         this.users = users;
     }
     @NonNull

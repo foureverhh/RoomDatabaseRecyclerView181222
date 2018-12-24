@@ -1,5 +1,6 @@
 package com.nackademin.foureverhh.roomdatabaserecyclerview181222;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
-    ArrayList<User> users;
+   // ArrayList<User> users;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
         fab = findViewById(R.id.fab);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        AppDatabase db = Room.
+                databaseBuilder(getApplicationContext(),
+                        AppDatabase.class,
+                        "production").
+                        allowMainThreadQueries().
+                        build();
+        List<User> users = db.userDao().getAllUsers();
+        /*
         users = new ArrayList<>();
         for (int i = 0; i <10; i++) {
             User user = new User("Daniel #"+i,
@@ -39,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
             users.add(user);
             //users.add("Famous people #"+ i);
         }
+        */
+
+
         adapter = new UserAdapter(users);
         recyclerView.setAdapter(adapter);
 
